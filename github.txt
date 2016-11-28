@@ -1,4 +1,13 @@
+ACTUALIZAR EL GITHUB
+
 git add . 
-git commit -m "First commit"
-Push to github:
+git commit -m "second commit"
 git push -u origin master
+
+
+HACER LA BD
+YA TENIENDO LA ENTIDAD CREADA
+php app/console doctrine:schema:update --force
+
+CREAR FORMULARIO
+php app/console doctrine:generate:form EMMUserBundle:User

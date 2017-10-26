@@ -9,7 +9,20 @@
                 <h2 class="padding-none">{% trans %}Users{% endtrans %}</h2>
             </div>
             <div class="table-responsive">
-                Total records: <span id="total">{{ pagination.getTotalItemCount }}</span>
+                <p>Total records: <span id="total">{{ pagination.getTotalItemCount }}</span></p>
+				
+				<form method="get" action="" class="form-inline" role="search">
+					<div class="form-group">
+						<input type="text" name="query" value="{{ app.request.get('query') }}" class="form-control" placeholder="Search User" required />
+					</div>
+					<input type="submit" value="Search" class="btn btn-default" />
+				</form>
+				<br>
+				{% if not pagination|length %}
+					<h2>No search result</h2>
+				{% endif %}
+				
+				{% if pagination|length %}
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -48,6 +61,7 @@
                         {% endfor %}
                     </tbody>
                 </table>
+				{% endif %}
                 {# display navigation #}
                 <div class="navigation">
                     {{ knp_pagination_render(pagination) }}
